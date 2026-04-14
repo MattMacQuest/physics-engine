@@ -64,9 +64,11 @@ def main():
         for event in pygame.event.get():
             # Quit events
             if event.type == pygame.QUIT:
+                log_event("Game exit by QUIT event")
                 return
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    log_event("Game exit by keypress", key=pygame.key.name(event.key))
                     return
                 
             # On-click events. I need to modify this to add
@@ -83,7 +85,7 @@ def main():
         # Update the updateables. This is where the calls to the C++
         # functions will go as well, to update the location instead of
         # just updating with dt
-        updateable.update(dt)
+        updateable.update(dt, mouse_pos)
         
         # Check collisions
         
