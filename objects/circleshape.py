@@ -13,6 +13,12 @@ class CircleShape(pygame.sprite.Sprite):
         
         # Circle radius
         self.radius = radius
+        self.r_squared = radius * radius
+        
+        # For adding selection capability
+        self.is_selected = False
+        
+        self.mouse_distance = self.update_distance_from_mouse(pygame.Vector2(pygame.mouse.get_pos()))
         
     def draw(self, screen):
         pass
@@ -24,3 +30,8 @@ class CircleShape(pygame.sprite.Sprite):
         if pygame.Vector2.distance_squared_to(self.position, other.position) < (self.radius + other.radius) * (self.radius + other.radius):
             return True
         return False
+    
+        
+    def update_distance_from_mouse(self, mouse_pos: pygame.Vector2):
+        self.mouse_distance = pygame.Vector2.distance_to(self.position, mouse_pos)
+        return self.mouse_distance

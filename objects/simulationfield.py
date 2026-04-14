@@ -45,6 +45,7 @@ class SimulationField(pygame.sprite.Sprite):
         if len(circles) < self.max_objects:
             new_circle = self.spawn(CIRCLE_RADIUS, position, pygame.Vector2())
             circles.add(new_circle)
+            
         
         # If there are already the maximum permitted objects, cull the oldest the
         # spawn a new one

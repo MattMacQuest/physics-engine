@@ -279,3 +279,6 @@ Testing/
 # Log files
 sim_state.jsonl
 sim_events.jsonl
+
+# Temporary test files
+test.py
