@@ -275,3 +275,7 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Log files
+sim_state.jsonl
+sim_events.jsonl

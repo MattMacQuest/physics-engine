@@ -1,0 +1,26 @@
+import pygame
+
+class CircleShape(pygame.sprite.Sprite):
+    def __init__(self, x, y, radius):
+        if hasattr(self, "containers"):
+            super().__init__(self.containers)
+        else:
+            super().__init__()
+        
+        # These will probable be replaced later depending on C++ implementation
+        self.position = pygame.Vector2(x, y)
+        self.velocity = pygame.Vector2(0, 0)
+        
+        # Circle radius
+        self.radius = radius
+        
+    def draw(self, screen):
+        pass
+    
+    def update(self, dt):
+        pass
+    
+    def is_colliding(self, other):
+        if pygame.Vector2.distance_squared_to(self.position, other.position) < (self.radius + other.radius) * (self.radius + other.radius):
+            return True
+        return False
