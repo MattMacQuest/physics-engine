@@ -18,9 +18,9 @@ class Circle(pygame.sprite.Sprite):
         # For adding selection capability
         self.is_selected = False
         
-        self.mouse_distance = 0.0
+        self.mouse_distance_square = 0.0
         
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface):
         # pygame.draw.circle(screen, "white", self.position, self.radius, 2)
         # Draw nicer circle
         pygame.gfxdraw.filled_circle(screen, int(self.position.x),
@@ -29,7 +29,7 @@ class Circle(pygame.sprite.Sprite):
                                 int(self.position.y), self.radius, self.color)
         
     # This needs to be reworked to take advantage of the distance from mouse field
-    def under_mouse(self, mouse_pos):
+    def under_mouse(self, mouse_pos) -> bool:
         mouse_collision = self.position.distance_squared_to(mouse_pos) < self.r_squared
         if mouse_collision:
             self.color = (255, 0, 0)
@@ -37,6 +37,7 @@ class Circle(pygame.sprite.Sprite):
             
         elif not mouse_collision and self.color == (255, 0, 0) and not self.is_selected:
             self.color = (255, 255, 255)
+        return False
         
     # This will be used to update the position of the circle later
     def update(self, dt, mouse_pos):
@@ -49,5 +50,5 @@ class Circle(pygame.sprite.Sprite):
         return False
     
     def update_distance_from_mouse(self, mouse_pos: pygame.Vector2):
-        self.mouse_distance = pygame.Vector2.distance_to(self.position, mouse_pos)
-        return self.mouse_distance
+        self.mouse_distance_square = pygame.Vector2.distance_squared_to(self.position, mouse_pos)
+        return self.mouse_distance_square

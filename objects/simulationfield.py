@@ -21,7 +21,7 @@ class SimulationField(pygame.sprite.Sprite):
         self.max_objects = MAX_OBJECTS
         
     # Function to spawn new circles into the circles group
-    def spawn(self, radius, position, velocity: pygame.Vector2) -> Circle:
+    def spawn(self, radius: int, position: pygame.Vector2, velocity: pygame.Vector2) -> Circle:
         # Creates new circle object
         circle = Circle(position.x, position.y, radius)
         
@@ -33,7 +33,7 @@ class SimulationField(pygame.sprite.Sprite):
         return circle
         
     # Defines update behavior
-    def update(self, position: pygame.Vector2, circles: pygame.sprite.Group):
+    def update(self, position: pygame.Vector2, circles: pygame.sprite.Group) -> None:
         # Checks if you're clicking on an existing circle. In the future this will be
         # used to drag circles around
         for circle in circles:
