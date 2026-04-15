@@ -4,6 +4,10 @@ from .circle import Circle
 from configuration import *
 from logger import log_event
 
+
+# I'm unsure whether this class is full necessary, or will impact performance later.
+# Potentially this could just be rolled into the main loop of the game, or into
+# functions
 class SimulationField(pygame.sprite.Sprite):
     # Sets the edges of the field, with normals included
     edges = [

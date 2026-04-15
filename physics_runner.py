@@ -26,11 +26,11 @@ def main():
     circles = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     updateable = pygame.sprite.Group()
-    spawners = pygame.sprite.Group()
+    fields = pygame.sprite.Group()
     
     # Set containers for each class
     Circle.containers = (updateable, drawable, circles)
-    SimulationField.containers = (spawners)
+    SimulationField.containers = (fields)
     
     # Set screen mode (in this case only changing size)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -68,9 +68,12 @@ def main():
             # the ability to click and drag to move circles
             # around the field if clicking on an existing circle,
             # or to spawn and drag a new circle
+            
+            # This should be changed to check if there's a circle under already, and if so, call
+            # the circle's update function, if not, call the spawner
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    spawners.update(mouse_pos, circles)
+                    fields.update(mouse_pos, circles)
             
         # Fills the surface with a color
         pygame.Surface.fill(screen, "black")

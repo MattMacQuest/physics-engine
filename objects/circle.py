@@ -10,6 +10,7 @@ class Circle(pygame.sprite.Sprite):
         self.color = (255, 255, 255)
         self.position = pygame.Vector2(x, y)
         self.velocity = pygame.Vector2(0, 0)
+        self.mass = radius * 2
 
         # Circle radius
         self.radius = radius
@@ -52,3 +53,6 @@ class Circle(pygame.sprite.Sprite):
     def update_distance_from_mouse(self, mouse_pos: pygame.Vector2):
         self.mouse_distance_square = pygame.Vector2.distance_squared_to(self.position, mouse_pos)
         return self.mouse_distance_square
+    
+    def move_with_mouse(self, mouse_pos: pygame.Vector2):
+        pass
